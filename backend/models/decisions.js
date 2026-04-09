@@ -7,6 +7,12 @@ const DecisionSchema = new mongoose.Schema({
   stress: Number,
   recommendation: String,
   explanation: String,
+  factors: [
+    {
+      name: String,
+      value: Number
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now
