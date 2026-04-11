@@ -20,6 +20,7 @@ Turning-Point is an AI-based decision support system designed to help users refl
 - `data/` : raw and processed datasets
 - `model/` : machine learning and recommendation logic
 - `frontend/turningpoint/` : UI prototype screens
+- `backend/` : Backend and database 
 
 ## Output
 The system predicts stress level, risk level, and trust level, and generates insights and recommendations based on user inputs.
