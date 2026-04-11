@@ -1,26 +1,25 @@
 # Turning-Point
-Turning-Point is an AI-based decision support system designed to help users reflect on important life decisions by analyzing behavioral and decision-related factors.
+
+Turning-Point is an AI-based decision support system designed to help users reflect on important life decisions using behavioral analysis and machine learning.
 
 ## Features
-- Survey-based behavioral analysis
-- Machine learning model for decision-related prediction
-- Backend integration using Flask
-- Frontend interface for user interaction
-- Personalized recommendations and insights
+- Survey-based decision analysis
+- Feature engineering using user behavior data
+- Machine learning models for stress, risk, and trust prediction
+- Explanation and recommendation generation
+- UI prototype for user interaction
 
 ## Tech Stack
 - Python
-- Flask
+- Pandas
 - Scikit-learn
-- Pandas / NumPy
-- JavaScript / HTML / CSS
+- NumPy
+- HTML / CSS / JavaScript (UI Prototype)
 
 ## Project Structure
-- `frontend/turningpoint` - user interface
-- `backend` - backend logic and integration
-- `model` - ML model and preprocessing
-- `data` - datasets
-- `api` - API-related files
+- `data/` : raw and processed datasets
+- `model/` : machine learning and recommendation logic
+- `frontend/turningpoint/` : UI prototype screens
 
-## Purpose
-The system is designed to support human decision-making, not replace it. It helps users understand stress, risk, confidence, and other behavioral patterns while making important decisions.
+## Output
+The system predicts stress level, risk level, and trust level, and generates insights and recommendations based on user inputs.
