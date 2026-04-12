@@ -1,0 +1,3 @@
+pickle.dump(stress_model, open('trained_models/stress_model.pkl', 'wb'))
+pickle.dump(risk_model, open('trained_models/risk_model.pkl', 'wb'))
+pickle.dump(trust_model, open('trained_models/trust_model.pkl', 'wb'))
