@@ -14,7 +14,11 @@ Turning-Point is an AI-based decision support system designed to help users refl
 - Pandas
 - Scikit-learn
 - NumPy
-- HTML / CSS / JavaScript (UI Prototype)
+- React
+- express
+- node js
+- mongodb
+  
 
 ## Project Structure
 - `data/` : raw and processed datasets
