@@ -1,27 +1,22 @@
-# =========================================
+
 # STEP 1: IMPORT LIBRARIES
-# =========================================
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 
-# =========================================
+
 # STEP 2: LOAD DATA
-# =========================================
 df = pd.read_csv("Decision and Life Outcome Survey (Responses) - Form Responses 1.csv")
 
-# =========================================
+
 # STEP 3: DATA CLEANING
-# =========================================
 df = df.drop(columns=["Timestamp"], errors="ignore")
 df = df.dropna()
 
 for col in df.select_dtypes(include="object"):
     df[col] = df[col].str.strip()
 
-# =========================================
 # STEP 4: FEATURE ENGINEERING
-# =========================================
 
 # Overthinking
 overthink_map = {
@@ -59,14 +54,12 @@ trust_map = {
     "Not sure": 2,
     "No": 1
 }
-
 df["AITrustScore"] = df[
     "Would you trust an AI system that explains its reasoning instead of just giving answers?  "
 ].map(trust_map).fillna(2)
 
-# =========================================
+
 # STEP 5: TARGET VARIABLES
-# =========================================
 
 df["StressLevel"] = (
     df["OverthinkingLevel"] * 0.5 +
@@ -78,9 +71,8 @@ df["RiskScore"] = (
     (5 - df["OverthinkingLevel"]) * 0.4
 )
 
-# =========================================
+
 # STEP 6: MODEL TRAINING
-# =========================================
 
 X = df[["OverthinkingLevel", "RiskTolerance", "FrustrationScore"]]
 
@@ -98,9 +90,8 @@ risk_model.fit(X_train, y_risk_train)
 trust_model = RandomForestClassifier()
 trust_model.fit(X_train, y_trust_train)
 
-# =========================================
+
 # STEP 7: EXPLANATION FUNCTION
-# =========================================
 
 def generate_explanation(overthinking, risk, frustration, stress, risk_score, trust, decision_type):
 
@@ -131,9 +122,8 @@ def generate_explanation(overthinking, risk, frustration, stress, risk_score, tr
 
     return text
 
-# =========================================
+
 # STEP 8: RECOMMENDATION FUNCTION
-# =========================================
 
 def generate_recommendation(stress, risk, trust, decision_type):
 
@@ -161,9 +151,8 @@ def generate_recommendation(stress, risk, trust, decision_type):
 
     return advice
 
-# =========================================
+
 # STEP 9: SIMULATED USER PROFILE
-# =========================================
 
 profile = {
     "overthinking": 3,
@@ -172,9 +161,8 @@ profile = {
     "ai_trust": 2
 }
 
-# =========================================
+
 # STEP 10: DECISION INPUT
-# =========================================
 
 decision = {
     "decision_type": "Career",
@@ -182,9 +170,8 @@ decision = {
     "time_pressure": 3
 }
 
-# =========================================
+
 # STEP 11: AI LOGIC (COMBINED)
-# =========================================
 
 adjusted_overthinking = profile["overthinking"] + (decision["importance"] * 0.2)
 adjusted_frustration = profile["frustration"] + (decision["time_pressure"] * 0.3)
@@ -200,9 +187,8 @@ stress = stress_model.predict(model_input)[0]
 risk = risk_model.predict(model_input)[0]
 trust = trust_model.predict(model_input)[0]
 
-# =========================================
+
 # STEP 12: FINAL OUTPUT
-# =========================================
 
 print("\n========== FINAL AI OUTPUT ==========\n")
 
